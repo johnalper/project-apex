@@ -1,14 +1,21 @@
 # package manager
 node_modules/
+.pnpm-debug.log*
+.pnp
+.pnp.js
 
-# macos
+# turborepo
+.turbo
+
+# macos & misc
 .DS_Store
+*.pem
 
 # environrment
 .env
 .env.*
 
-# hydrogen storefront gitignore
+# hydrogen storefront gitignore merge
 apps/storefront/.cache
 apps/storefront/build
 apps/storefront/dist
@@ -16,3 +23,18 @@ apps/storefront/public/build
 apps/storefront/.mf
 apps/storefront/.shopify
 apps/storefront/.react-router
+
+# sanity studio gitignore merge
+apps/studio/dist/
+apps/studio/.sanity/
+apps/studio/coverage
+
+# typescript
+*.tsbuildinfo
+
+# dotenv and local-only files
+*.local
+
+# logs
+logs/
+*.log
