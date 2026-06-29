@@ -1,0 +1,5 @@
+# package manager
+node_modules/
+
+# macos
+.DS_Store
