@@ -13,3 +13,4 @@ Headless commerce architecture with Shopify Hydrogen and Sanity CMS.
 - script: pnpm run build (turbo run build)
 - localhost:3000 runs hydrogen storefront
 - localhost:3333 runs sanity CMS
+- successfully running storefront and CMS (decoupled)
