@@ -3,3 +3,16 @@ node_modules/
 
 # macos
 .DS_Store
+
+# environrment
+.env
+.env.*
+
+# hydrogen storefront gitignore
+apps/storefront/.cache
+apps/storefront/build
+apps/storefront/dist
+apps/storefront/public/build
+apps/storefront/.mf
+apps/storefront/.shopify
+apps/storefront/.react-router
