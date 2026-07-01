@@ -44,15 +44,3 @@ The repository currently provides a successfully running, decoupled storefront a
 - **Data Fetching Layer:** Integrating the Sanity data pipeline into Hydrogen's loaders to stitch the CMS content into the storefront.
 - **Localization:** Implementing routing on top of the established multi-language URL structure to simulate multi-market platform requirements.
 
-### So Far
-
-- monorepo setup
-- sanity for headless CMS
-- hydrogen for the headless storefront
-- mock.shop data simulating Shopify inventory
-- new turborepo 2.10.1 adds support for devEngines.packageManager (updated)
-- script: pnpm run dev (turbo run dev)
-- script: pnpm run build (turbo run build)
-- localhost:3000 runs hydrogen storefront
-- localhost:3333 runs sanity CMS
-- successfully running storefront and CMS (decoupled)
