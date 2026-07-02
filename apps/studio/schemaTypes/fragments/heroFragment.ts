@@ -8,7 +8,7 @@ export const heroFragmentType = defineType({
         defineField({
             name: 'headline',
             type: 'string',
-            validation: (Rule) => Rule.require(),
+            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'subheadline',

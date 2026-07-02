@@ -13,7 +13,7 @@ export const productGridFragmentType = defineType({
             name: 'shopifyProductIds',
             title: 'Target Shopify Product IDs',
             type: 'array',
-            of[{
+            of: [{
                 type: 'string',
                 description: 'The raw GID string from Shopify',
             }],
