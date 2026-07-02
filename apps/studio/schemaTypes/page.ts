@@ -20,7 +20,10 @@ export const pageType = defineType({
             name: 'modules',
             title: 'Content Fragments',
             type: 'array',
-            of: [],
+            of: [
+                { type: 'heroFragment' },
+                { type: 'productGridFragment' }
+            ],
         }),
     ],
 });
