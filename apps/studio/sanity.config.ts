@@ -10,6 +10,11 @@ export default defineConfig({
   projectId: 'd4etx38o',
   dataset: 'poc',
 
+  deployment: {
+      // prevents interactive CLI block/stall when upstream version mismatch
+      autoUpdates: false,
+  },
+
   plugins: [structureTool(), visionTool()],
 
   schema: {
