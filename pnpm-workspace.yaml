@@ -12,3 +12,10 @@ minimumReleaseAgeExclude:
   - '@turbo/windows-64@2.10.1'
   - '@turbo/windows-arm64@2.10.1'
   - turbo@2.10.1
+  - '@sanity/diff@6.4.0'
+  - '@sanity/mutator@6.4.0'
+  - '@sanity/schema@6.4.0'
+  - '@sanity/types@6.4.0'
+  - '@sanity/util@6.4.0'
+  - sanity@6.4.0
+  - '@sanity/vision@6.4.0'
