@@ -41,6 +41,6 @@ Once the dev script is running, the decoupled instances are available at:
 
 The repository currently provides a successfully running, decoupled storefront and CMS foundation, however, still work in progress. Below are the initial goals yet to be implemented:
 
-- **Data Fetching Layer:** Integrating the Sanity data pipeline into Hydrogen's loaders to stitch the CMS content into the storefront.
+- ~~**Data Fetching Layer:** Integrating the Sanity data pipeline into Hydrogen's loaders to stitch the CMS content into the storefront.~~ (done)
 - **Localization:** Implementing routing on top of the established multi-language URL structure to simulate multi-market platform requirements.
 
