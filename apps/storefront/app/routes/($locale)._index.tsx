@@ -8,7 +8,7 @@ import type {
 } from 'storefrontapi.generated';
 import {ProductItem} from '~/components/ProductItem';
 import {MockShopNotice} from '~/components/MockShopNotice';
-import {HeroFragment} from '~/components/HeroFragment';
+import {HeroFragment, type SanityHeroData} from '~/components/HeroFragment';
 
 export const meta: Route.MetaFunction = () => {
   return [{title: 'Hydrogen | Home'}];
@@ -29,14 +29,29 @@ export async function loader(args: Route.LoaderArgs) {
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  */
 async function loadCriticalData({context}: Route.LoaderArgs) {
-  const [{collections}] = await Promise.all([
+ const sanityPageQuery = `*[_type == "page" && slug.current == "test-one"][0] {
+    title,
+    "hero": modules[_type == "heroFragment"][0] {
+      headline,
+      subheadline,
+      ctaLabel,
+      ctaLink
+    }
+  }`; 
+
+  const [{collections}, sanityPage] = await Promise.all([
     context.storefront.query(FEATURED_COLLECTION_QUERY),
     // Add other queries here, so that they are loaded in parallel
+    context.sanity.query(sanityPageQuery).catch((err) => {
+        console.error('Sanity fetch failure:', err);
+        return null;
+    }),
   ]);
 
   return {
     isShopLinked: Boolean(context.env.PUBLIC_STORE_DOMAIN),
     featuredCollection: collections.nodes[0],
+    sanityHero: (sanityPage?.hero || null) as SanityHeroData | null,
   };
 }
 
@@ -63,7 +78,7 @@ export default function Homepage() {
   const data = useLoaderData<typeof loader>();
   return (
     <div className="home">
-      <HeroFragment />
+      {data.sanityHero && <HeroFragment data={data.sanityHero} />}
       {data.isShopLinked ? null : <MockShopNotice />}
       <FeaturedCollection collection={data.featuredCollection} />
       <RecommendedProducts products={data.recommendedProducts} />
