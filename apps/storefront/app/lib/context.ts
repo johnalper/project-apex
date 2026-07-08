@@ -3,6 +3,7 @@ import {AppSession} from '~/lib/session';
 import {CART_QUERY_FRAGMENT} from '~/lib/fragments';
 import type {CartApiQueryFragment} from 'storefrontapi.generated';
 import {getLocaleFromRequest} from '~/lib/i18n';
+import {createSanityContext, type SanityContext} from 'hydrogen-sanity';
 
 // Define the additional context object
 const additionalContext = {
@@ -17,7 +18,10 @@ const additionalContext = {
 type AdditionalContextType = typeof additionalContext;
 
 declare global {
-  interface HydrogenAdditionalContext extends AdditionalContextType {}
+  // Augment so TS knows context.sanity exists
+  interface HydrogenAdditionalContext extends AdditionalContextType {
+    sanity: SanityContext;
+  }
 
   // Augment HydrogenCustomCartFragment with the codegen'd cart fragment type so
   // that context.cart.get() and all cart mutations return the extended cart type.
@@ -46,6 +50,18 @@ export async function createHydrogenRouterContext(
     AppSession.init(request, [env.SESSION_SECRET]),
   ]);
 
+  const sanity = await createSanityContext({
+    request,
+    cache,
+    waitUntil,
+    client: {
+      projectId: env.PUBLIC_SANITY_PROJECT_ID,
+      dataset: env.PUBLIC_SANITY_DATASET,
+      apiVersion: env.PUBLIC_SANITY_API_VERSION,
+      useCdn: true,
+    },
+  });
+
   const hydrogenContext = createHydrogenContext(
     {
       env,
@@ -59,6 +75,7 @@ export async function createHydrogenRouterContext(
         queryFragment: CART_QUERY_FRAGMENT,
       },
     },
+    { sanity },
     additionalContext,
   );
 
