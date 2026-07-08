@@ -75,6 +75,11 @@ export async function loader(args: Route.LoaderArgs) {
 
   const {storefront, env} = args.context;
 
+  // intercept and override store data replacing with our own store name
+  if (criticalData?.header?.shop && env.PUBLIC_STOREFRONT_NAME) {
+    criticalData.header.shop.name = env.PUBLIC_STOREFRONT_NAME;
+  }
+
   return {
     ...deferredData,
     ...criticalData,

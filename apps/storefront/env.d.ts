@@ -13,4 +13,5 @@ interface Env {
     PUBLIC_SANITY_PROJECT_ID: string;
     PUBLIC_SANITY_DATASET: string;
     PUBLIC_SANITY_API_VERSION: string;
+    PUBLIC_STOREFRONT_NAME: string;
 }
