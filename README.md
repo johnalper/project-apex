@@ -12,6 +12,7 @@ The project is structured to keep the presentation and content authoring complet
 - Headless CMS: Powered by Sanity, simulating content fragmentation and structured schemas.
 - Headless Storefront: Built on Shopify Hydrogen for dynamic rendering and routing.
 - Mock Commerce Layer: Leverages live Mock.shop data to simulate catalog inventory without requiring authentication setup.
+- Data Fetching Layer: Integrates the Sanity data pipeline into Hydrogen's loaders to stitch the CMS content into the storefront.
 
 ### Local Development & Installation
 
@@ -41,6 +42,5 @@ Once the dev script is running, the decoupled instances are available at:
 
 The repository currently provides a successfully running, decoupled storefront and CMS foundation, however, still work in progress. Below are the initial goals yet to be implemented:
 
-- ~~**Data Fetching Layer:** Integrating the Sanity data pipeline into Hydrogen's loaders to stitch the CMS content into the storefront.~~ (done)
 - **Localization:** Implementing routing on top of the established multi-language URL structure to simulate multi-market platform requirements.
 
